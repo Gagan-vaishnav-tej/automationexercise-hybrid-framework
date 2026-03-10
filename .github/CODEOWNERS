@@ -1,0 +1,10 @@
+# Step 2 — Add content
+
+# Default owner for everything
+*                    @Gagan-vaishnav-tej
+
+# Module specific owners
+ui-automation/       @Gagan-vaishnav-tej
+api-automation/      @Gagan-vaishnav-tej
+common/              @Gagan-vaishnav-tej
+pom.xml              @Gagan-vaishnav-tej
