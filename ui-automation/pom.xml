@@ -6,4 +6,35 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>ui-automation</artifactId>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.automationexercise</groupId>
+  		<artifactId>common</artifactId>
+		<version>${project.version}</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.seleniumhq.selenium</groupId>
+		<artifactId>selenium-java</artifactId>
+  	</dependency>
+  	<dependency>
+		<groupId>io.github.bonigarcia</groupId>
+		<artifactId>webdrivermanager</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>io.cucumber</groupId>
+		<artifactId>cucumber-java</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>io.cucumber</groupId>
+		<artifactId>cucumber-testng</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.testng</groupId>
+		<artifactId>testng</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.aventstack</groupId>
+		<artifactId>extentreports</artifactId>
+	</dependency>
+  </dependencies>
 </project>
