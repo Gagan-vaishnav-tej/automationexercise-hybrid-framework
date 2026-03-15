@@ -3,7 +3,7 @@ package hooks;
 import org.openqa.selenium.WebDriver;
 
 import config.ConfigReader;
-import driver.DriverManager;
+import driver.DriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -16,16 +16,16 @@ public class Hooks {
 	@Before
 	public void setUp() {
 		ConfigReader.loadConfig();
-		driver = DriverManager.intiDriver(ConfigReader.getProperty("browser"));
+		driver = DriverFactory.initDriver(ConfigReader.getProperty("browser"));
 		driver.get(ConfigReader.getProperty("base.url"));
 	}
 	
 	@After
 	public void tearDown(Scenario scenario) {
 		if(scenario.isFailed()) {
-			String screenshot = ScreenshotUtil.capture(driver);
+			byte[] screenshot = ScreenshotUtil.capture(driver);
 			scenario.attach(screenshot, "image/png", "Failue Screenshot");
 		}
-		DriverManager.quitDriver();
+		DriverFactory.quitDriver();
 	}
 }

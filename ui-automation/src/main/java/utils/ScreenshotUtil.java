@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 
 public class ScreenshotUtil {
 
-	public static String capture(WebDriver driver) {
-		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
+	public static byte[] capture(WebDriver driver) {
+		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 	}
 
 }

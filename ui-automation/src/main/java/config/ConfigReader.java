@@ -29,7 +29,6 @@ public class ConfigReader {
 			    "name",
 			    "email",
 			    "title",
-			    "password",
 			    "dob.day",
 			    "dob.month",
 			    "dob.year",
@@ -46,6 +45,8 @@ public class ConfigReader {
 			for (String key : keys) {
 			    data.put(key, prop.getProperty("register." + key));
 			}
+			String pass = prop.getProperty("register.password") + System.currentTimeMillis();
+			data.put("password", pass);
 		return data;
 	}
 }

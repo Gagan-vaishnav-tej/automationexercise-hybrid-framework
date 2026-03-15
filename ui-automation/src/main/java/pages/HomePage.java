@@ -9,7 +9,7 @@ public class HomePage {
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
 	}
-	private By btnSignupLogin = By.xpath("//a[normalize-space()='Signup / Login']");
+	private By btnSignupLogin = By.cssSelector("a[href='/login']");
 	private By txtLoginUser = By.xpath("//div[contains(@class, \"shop-menu\")]//li[10]");
 	
 	public void clickSignupLogin() {

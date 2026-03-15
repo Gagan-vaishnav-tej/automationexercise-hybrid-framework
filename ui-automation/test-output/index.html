@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\neela\AppData\Local\Temp\testng-eclipse--1322269771\testng-customsuite.xml</span>
+                    <span>C:\Users\neela\AppData\Local\Temp\testng-eclipse-1528360561\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -130,46 +130,18 @@
                   </a> <!-- runScenario("TC1: Register New User and validate", "User Registration") -->
                   <span class="method-name">runScenario</span>
                   <span class="parameters">("TC1: Register New User and validate","User Registration")</span>
-                  <div class="stack-trace">io.cucumber.testng.UndefinedStepException: The step &apos;the user is on the home page&apos; and 8 other step(s) are undefined.
-You can implement these steps using the snippet(s) below:
-
-@Given(&quot;the user is on the home page&quot;)
-public void the_user_is_on_the_home_page() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-@When(&quot;the user clicks {string}&quot;)
-public void the_user_clicks(String string) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-@When(&quot;the user enters name and email on the sign up form&quot;)
-public void the_user_enters_name_and_email_on_the_sign_up_form() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-@When(&quot;the user submits the sign up form&quot;)
-public void the_user_submits_the_sign_up_form() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-@When(&quot;the user enters all required account details&quot;)
-public void the_user_enters_all_required_account_details() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-@Then(&quot;the user should see {string} message&quot;)
-public void the_user_should_see_message(String string) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-@Then(&quot;the user should be logged in with their name visible&quot;)
-public void the_user_should_be_logged_in_with_their_name_visible() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-	at ✽.the user is on the home page(file:///D:/projects/automationexercise-hybrid-framework/ui-automation/src/test/resources/features/register.feature:6)
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element found by By.cssSelector: h2[data-qa=&apos;account-created&apos;], but... org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;h2[data-qa=&apos;account-created&apos;]&quot;}.
+(tried for 10 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.41.0&apos;, revision: &apos;9fc754f&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.10&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 145.0.7632.160, chrome: {chromedriverVersion: 145.0.7632.117 (de4e5d6e13b..., userDataDir: C:\Users\neela\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51426}, goog:processID: 5492, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51426/devtoo..., se:cdpVersion: 145.0.7632.160, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: acf05026b85a983047032cec4b69b9a4
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:233)
+	at pages.SignupPage.getAccountCreatedMsg(SignupPage.java:67)
+	at stepdefinitions.RegisterSteps.validateMsg(RegisterSteps.java:73)
+	at ✽.the user should see &quot;ACCOUNT CREATED!&quot; message(file:///D:/projects/automationexercise-hybrid-framework/ui-automation/src/test/resources/features/register.feature:12)
 
 </div> <!-- stack-trace -->
                   <em>
@@ -181,7 +153,7 @@ public void the_user_should_be_logged_in_with_their_name_visible() {
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\neela\AppData\Local\Temp\testng-eclipse--1322269771\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\neela\AppData\Local\Temp\testng-eclipse-1528360561\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -242,12 +214,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'runScenario')
 data.setCell(0, 2, 'runners.TestRunner')
-data.setCell(0, 3, 198);
+data.setCell(0, 3, 26830);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 198 ms</span>
+              <span class="suite-total-time">Total running time: 26 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -275,18 +247,18 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">runners.TestRunner</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
-                <span class="method-name">setUpClass(org.testng.TestRunner@27a0a5a2)</span>
+                <span class="method-name">setUpClass(org.testng.TestRunner@2a47597)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">runScenario("TC1: Register New User and validate", "User Registration")</span>
-                <span class="method-start">1141 ms</span>
+                <span class="method-start">547 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">1349 ms</span>
+                <span class="method-start">27390 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

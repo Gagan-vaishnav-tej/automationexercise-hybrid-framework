@@ -10,12 +10,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class DriverManager {
+public class DriverFactory {
 
 	private static ThreadLocal<WebDriver> driverThread = new ThreadLocal<WebDriver>();
 	private static WebDriverWait wait;
 
-	public static WebDriver intiDriver(String browser) {
+	public static WebDriver initDriver(String browser) {
 		WebDriver driver;
 		switch(browser.toLowerCase()) {
 			case "chrome" : WebDriverManager.chromedriver().setup();
