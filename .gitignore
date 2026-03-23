@@ -3,7 +3,7 @@
 .settings/
 .metadata/
 
-
+**/test-output/
 **/target/
 **/bin/
 **/test-output/
