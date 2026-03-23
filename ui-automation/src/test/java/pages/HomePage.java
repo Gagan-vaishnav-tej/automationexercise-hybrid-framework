@@ -19,7 +19,12 @@ public class HomePage {
 		driver.findElement(signupLoginButton).click();
 	}
 	
-	public String getLoggedInAsUser() {
+	public boolean isLoggedInAsDisplayed()
+	{
+		return driver.findElement(loggedInAsText).isDisplayed();
+	}
+	
+	public String getLoggedInAsUserText() {
 		return driver.findElement(loggedInAsText).getText();
 	}
 	
