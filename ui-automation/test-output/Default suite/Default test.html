@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/3/0</td>
 </tr><tr>
-<td>Started on:</td><td>Mon Mar 16 23:14:44 IST 2026</td>
+<td>Started on:</td><td>Mon Mar 23 11:07:07 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>24 seconds (24249 ms)</td>
+<tr><td>Total time:</td><td>15 seconds (15691 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,8 +67,8 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td><b>Attribute(s)</b></td>
 <td width="30%"><b>Exception</b></td>
@@ -76,10 +76,65 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
+<td title='runners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "TC3: Invalid User Login with invalid email", "User Login"</td>
+<td><div><pre>java.lang.NullPointerException: Cannot invoke &quot;pages.LoginPage.getLoginMessage()&quot; because &quot;this.loginPage&quot; is null
+	at stepdefinitions.LoginSteps.isLoginMessageVisible(LoginSteps.java:57)
+	at ✽.the user should see Login to your account message(file:///D:/MyGitRepos/automationexercise-test-framework/ui-automation/src/test/resources/features/login.feature:13)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1657218305", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1657218305'><pre>java.lang.NullPointerException: Cannot invoke &quot;pages.LoginPage.getLoginMessage()&quot; because &quot;this.loginPage&quot; is null
+	at stepdefinitions.LoginSteps.isLoginMessageVisible(LoginSteps.java:57)
+	at ✽.the user should see Login to your account message(file:///D:/MyGitRepos/automationexercise-test-framework/ui-automation/src/test/resources/features/login.feature:13)
+</pre></div></td>
+<td>4</td>
+<td>runners.TestRunner@4961f6af</td></tr>
+<tr>
+<td title='runners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "TC2: Valid User Login", "User Login"</td>
+<td><div><pre>java.lang.NullPointerException: Cannot invoke &quot;pages.LoginPage.getLoginMessage()&quot; because &quot;this.loginPage&quot; is null
+	at stepdefinitions.LoginSteps.isLoginMessageVisible(LoginSteps.java:57)
+	at ✽.the user should see Login to your account message(file:///D:/MyGitRepos/automationexercise-test-framework/ui-automation/src/test/resources/features/login.feature:5)
+</pre></div><a href='#' onClick='toggleBox("stack-trace287136919", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace287136919'><pre>java.lang.NullPointerException: Cannot invoke &quot;pages.LoginPage.getLoginMessage()&quot; because &quot;this.loginPage&quot; is null
+	at stepdefinitions.LoginSteps.isLoginMessageVisible(LoginSteps.java:57)
+	at ✽.the user should see Login to your account message(file:///D:/MyGitRepos/automationexercise-test-framework/ui-automation/src/test/resources/features/login.feature:5)
+</pre></div></td>
+<td>6</td>
+<td>runners.TestRunner@4961f6af</td></tr>
+<tr>
 <td title='runners.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runners.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "TC1: Register New User and validate", "User Registration"</td>
-<td></td>
-<td>23</td>
-<td>runners.TestRunner@2df3b89c</td></tr>
+<td><div><pre>io.cucumber.testng.UndefinedStepException: The step &apos;the user clicks &quot;Signup / Login&quot; button&apos; and 8 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@When(&quot;the user clicks {string} button&quot;)
+public void the_user_clicks_button(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;the user should see {string} message&quot;)
+public void the_user_should_see_message(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.the user clicks &quot;Signup / Login&quot; button(file:///D:/MyGitRepos/automationexercise-test-framework/ui-automation/src/test/resources/features/register.feature:7)
+</pre></div><a href='#' onClick='toggleBox("stack-trace406511188", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace406511188'><pre>io.cucumber.testng.UndefinedStepException: The step &apos;the user clicks &quot;Signup / Login&quot; button&apos; and 8 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@When(&quot;the user clicks {string} button&quot;)
+public void the_user_clicks_button(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then(&quot;the user should see {string} message&quot;)
+public void the_user_should_see_message(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at ✽.the user clicks &quot;Signup / Login&quot; button(file:///D:/MyGitRepos/automationexercise-test-framework/ui-automation/src/test/resources/features/register.feature:7)
+</pre></div></td>
+<td>4</td>
+<td>runners.TestRunner@4961f6af</td></tr>
 </table><p>
 </body>
 </html>

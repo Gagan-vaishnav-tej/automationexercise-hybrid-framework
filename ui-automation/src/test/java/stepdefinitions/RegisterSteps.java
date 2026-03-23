@@ -20,7 +20,7 @@ import pages.SignupPage;
 import utils.RandomUtil;
 import utils.RegisterDataUtil;
 
-public class RegisterSteps {
+public class RegisterSteps{
 	
 	private WebDriver driver;
 	private HomePage homePage;
@@ -41,70 +41,74 @@ public class RegisterSteps {
 	    homePage = new HomePage(driver);
 	}
 	
-	@Then("the home page should be visible successfully")
-	public void isHomePageVisible() {
-		logger.info("home page should be visible");
-	   Assert.assertTrue(homePage.isHomePageVisible());
+	@When("the user clicks Signup or Login button")
+	public void clicksSignupLogin() {
+	    logger.info("the user clicks on Signup / Login");
+	    homePage.clickSignupLogin();
+	    loginPage = new LoginPage(driver);
 	}
+
+	@When("the user clicks Signup button")
+	public void clicksSignup() {
+	    logger.info("the user clicks on Signup");
+	    loginPage.clickSignup();
+	    signupPage = new SignupPage(driver);
+	}
+
+	@When("the user clicks Create Account button")
+	public void clicksCreateAccount() {
+	    logger.info("the user clicks on Create Account");
+	    signupPage.clickCreateAccount();
+	    accoutCreatedPage = new AccountCreatedPage(driver);
+	}
+
+	@When("the user clicks Continue button")
+	public void clicksContinue() {
+	    logger.info("the user clicks on Continue");
+	    if (accoutCreatedPage.getUrl().contains("created"))
+	        accoutCreatedPage.clickContinue();
+	    else if (accountDeletedPage.getUrl().contains("deleted"))
+	        accountDeletedPage.clickContinue();
+	}
+
+	@When("the user clicks Delete Account button")
+	public void clicksDeleteAccount() {
+	    logger.info("the user clicks on Delete Account");
+	    homePage.clickDeleteAccount();
+	    accountDeletedPage = new AccountDeletedPage(driver);
+	}
+
 	
-	@When("the user clicks {string}")
-	public void clicks(String button) {
-		logger.info("the user clicks on "+button);
-		switch(button) {
-			case "Signup / Login":
-				homePage.clickSignupLogin();
-	    		loginPage = new LoginPage(driver);
-	    		break;
-			case "Signup":
-				loginPage.clickSignup();
-	    		signupPage = new SignupPage(driver);
-	    		break;
-			case "Create Account":
-				signupPage.clickCreateAccount();
-	    		accoutCreatedPage = new AccountCreatedPage(driver);
-	    		break;
-			case "Continue":
-				if(accoutCreatedPage.getUrl().contains("created"))
-					accoutCreatedPage.clickContinue();
-				else if(accountDeletedPage.getUrl().contains("deleted"))
-					accountDeletedPage.clickContinue();
-				break;
-			case "Delete Account":
-				homePage.clickDeleteAccount();
-		    	accountDeletedPage = new AccountDeletedPage(driver);
-		    	break;
-		    default:
-		    	throw new IllegalArgumentException("Invalid Button");
-		}
+	@Then("the user should see New User Signup! message")
+	public void isNewUserSignupMessageVisible() {
+	    logger.info("the user should see New User Signup! message");
+	    String actualMessage = loginPage.getSignupMessage();
+	    Assert.assertEquals(actualMessage, "New User Signup!");
 	}
+
+	@Then("the user should see ENTER ACCOUNT INFORMATION message")
+	public void isEnterAccountInfoMessageVisible() {
+	    logger.info("the user should see ENTER ACCOUNT INFORMATION message");
+	    String actualMessage = signupPage.getEnterAccountInfo();
+	    Assert.assertEquals(actualMessage, "ENTER ACCOUNT INFORMATION");
+	}
+
+	@Then("the user should see ACCOUNT CREATED! message")
+	public void isAccountCreatedMessageVisible() {
+	    logger.info("the user should see ACCOUNT CREATED! message");
+	    String actualMessage = accoutCreatedPage.getAccountCreatedMsg();
+	    Assert.assertEquals(actualMessage, "ACCOUNT CREATED!");
+	}
+
+	@Then("the user should see ACCOUNT DELETED! message")
+	public void isAccountDeletedMessageVisible() {
+	    logger.info("the user should see ACCOUNT DELETED! message");
+	    String actualMessage = accountDeletedPage.getAccountDeletedMsg();
+	    Assert.assertEquals(actualMessage, "ACCOUNT DELETED!");
+	    accountDeletedPage.clickContinue();
+	}
+
 	
-	@Then("the user should see {string} message")
-	public void isMessageVisible(String message) {
-		logger.info("the user should see "+message+" message");
-		String actualMessage = "";
-		switch(message) {
-			case "New User Signup!":
-				actualMessage = loginPage.getSignupMessage();
-		    	Assert.assertEquals(actualMessage, message);
-		    	break;
-			case "ENTER ACCOUNT INFORMATION":
-				actualMessage = signupPage.getEnterAccountInfo();
-		    	Assert.assertEquals(actualMessage, message);
-		    	break;
-			case "ACCOUNT CREATED!":
-				actualMessage = accoutCreatedPage.getAccountCreatedMsg();
-		    	Assert.assertEquals(actualMessage, message);
-		    	break;
-			case "ACCOUNT DELETED!":
-				actualMessage = accountDeletedPage.getAccountDeletedMsg();
-		    	Assert.assertEquals(actualMessage, message);
-		    	accountDeletedPage.clickContinue();
-		    	break;
-		    default:
-		    	throw new IllegalArgumentException("Invalid Messsae");
-				
-		}
-	}
 	
 	@When("the user enters name and email on the sign up form")
 	public void enterSignupDetails() {
@@ -124,7 +128,7 @@ public class RegisterSteps {
 	@Then("the user should be logged in with their name visible")
 	public void loggedInAsUser() {
 		logger.info("the user should be logged in with their name visible");
-	    String actual = homePage.getLoggedInAsUser();
+	    String actual = homePage.getLoggedInAsUserText();
 	    Assert.assertEquals(actual, ConfigReader.getProperty("register.name"));
 	}
 
