@@ -14,6 +14,7 @@ public class HomePage {
 	private By signupLoginButton = By.cssSelector("a[href='/login']");
 	private By loggedInAsText = By.xpath("//div[contains(@class,'shop-menu')]//b");
 	private By deleteAccountButton = By.cssSelector("a[href='/delete_account']");
+	private By productsButton=By.cssSelector("a[href='/products']");
 	
 	public void clickSignupLogin() {
 		driver.findElement(signupLoginButton).click();
@@ -34,5 +35,10 @@ public class HomePage {
 	
 	public boolean isHomePageVisible() {
 		return driver.findElement(homeButton).isDisplayed();
+	}
+	
+	public void clickProduct()
+	{
+		driver.findElement(productsButton).click();
 	}
 }
