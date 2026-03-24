@@ -1,4 +1,4 @@
-Feature: Add products in cart
+Feature:  products in cart
 	
 	@AddProduct @UI
 	Scenario: TC4: Add Product to the Cart and validate 
