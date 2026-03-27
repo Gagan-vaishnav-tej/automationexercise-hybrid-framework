@@ -12,12 +12,12 @@ import logger.LogsFactory;
 import pages.HomePage;
 import pages.ProductPage;
 
-public class AddAndDeleteProductSteps {
+public class AddProductSteps {
 	private WebDriver driver;
 	private HomePage homepage;
 	private ProductPage productpage;
-	private Logger logger=LogsFactory.getLogger(AddAndDeleteProductSteps.class);
-	public AddAndDeleteProductSteps()
+	private Logger logger=LogsFactory.getLogger(AddProductSteps.class);
+	public AddProductSteps()
 	{
 		logger.info("Launching Browser");
 		driver=DriverFactory.getDriver();
