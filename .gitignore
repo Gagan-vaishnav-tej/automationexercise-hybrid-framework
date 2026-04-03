@@ -6,6 +6,5 @@
 **/test-output/
 **/target/
 **/bin/
-**/test-output/
 
 .allure
