@@ -5,11 +5,10 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigReader {
-	private static Properties prop;
+	private static final Properties prop = new Properties();;
 	
-	public static void loadConfig() {
+	static {
 		try(FileInputStream fin = new FileInputStream("src/test/resources/config.properties")){
-			prop = new Properties();
 			prop.load(fin);			
 		}
 		catch (IOException e) {
@@ -18,10 +17,11 @@ public class ConfigReader {
 	}
 	
 	public static String getProperty(String key) {
-		return prop.getProperty(key);
+		String value = prop.getProperty(key);
+		if (value == null) {
+            throw new RuntimeException("Property not found: " + key);
+        }
+		return value;
 	}
-	
-	public static Properties getConfig() {
-		return prop;
-	}
+
 }

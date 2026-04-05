@@ -19,6 +19,9 @@
     <testng.version>7.12.0</testng.version>
     <log4j.version>2.25.3</log4j.version>
     <allure.version>2.29.0</allure.version>
+    <restassured.version>5.5.7</restassured.version>
+    <json.version>20251224</json.version>
+    <faker.version>1.0.2</faker.version>
   </properties>
   
   <dependencies>
@@ -94,6 +97,39 @@
         <version>${allure.version}</version>
         <scope>test</scope>
       </dependency>
+      <!-- Source: https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+	  <dependency>
+		<groupId>io.rest-assured</groupId>
+		<artifactId>rest-assured</artifactId>
+		<version>${restassured.version}</version>
+		<scope>test</scope>
+	  </dependency>
+	  	<!-- Source: https://mvnrepository.com/artifact/io.rest-assured/json-path -->
+	  <dependency>
+	    <groupId>io.rest-assured</groupId>
+	    <artifactId>json-path</artifactId>
+	    <version>${restassured.version}</version>
+	    <scope>compile</scope>
+	  </dependency>
+	  <!-- Source: https://mvnrepository.com/artifact/org.json/json -->
+	  <dependency>
+	    <groupId>org.json</groupId>
+	    <artifactId>json</artifactId>
+	    <version>${json.version}</version>
+	    <scope>compile</scope>
+	  </dependency>
+	  <!-- Source: https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
+	  <dependency>
+	    <groupId>io.rest-assured</groupId>
+	    <artifactId>json-schema-validator</artifactId>
+	    <version>${restassured.version}</version>
+	    <scope>compile</scope>
+	  </dependency>
+	  <dependency>
+	    <groupId>com.github.javafaker</groupId>
+	    <artifactId>javafaker</artifactId>
+	    <version>${faker.version}</version>
+	  </dependency>
     </dependencies>
   </dependencyManagement>
 
