@@ -1,9 +1,13 @@
 package builder;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import constants.ApiEndpoints;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import pojo.User;
 
 public class RequestBuilder {
 	
@@ -26,7 +30,38 @@ public class RequestBuilder {
 				.contentType("application/x-www-form-urlencoded")
 				.formParam("search_product", pathParameter)
 				.when()
-					.post(endpoint);
+					.post(endpoint)
+				.then().log().all().extract().response();
+	}
+	
+	public Response postCreateAccount(String endpoint, User user) {
+	    Map<String, String> params = userToFormParams(user); 
+	    RequestSpecification req = buildRequest().contentType("application/x-www-form-urlencoded");
+	    params.forEach(req::formParam);
+	    return req.when().post(endpoint)
+	              .then().log().ifError()
+	              .extract().response();
+	}
+
+	private Map<String,String> userToFormParams(User user){
+	    Map<String,String> map = new HashMap<String,String>();
+	    map.put("name", user.getName());
+	    map.put("email", user.getEmail());
+	    map.put("password", user.getPassword());
+	    map.put("title", user.getTitle());
+	    map.put("birth_date", user.getBirthDate());
+	    map.put("birth_month", user.getBirthMonth());
+	    map.put("birth_year", user.getBirthYear());
+	    map.put("firstname", user.getFirstName());
+	    map.put("lastname", user.getLastName());
+	    map.put("company", user.getCompany());
+	    map.put("address1", user.getAddress1());
+	    map.put("country", user.getCountry());
+	    map.put("state", user.getState());
+	    map.put("city", user.getCity());
+	    map.put("zipcode", user.getZipcode());
+	    map.put("mobile_number", user.getMobileNumber());
+	    return map;
 	}
 }
 
