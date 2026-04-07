@@ -18,7 +18,10 @@
     <cucumber.version>7.34.3</cucumber.version>
     <testng.version>7.12.0</testng.version>
     <log4j.version>2.25.3</log4j.version>
-    <extent.version>5.1.2</extent.version>
+    <allure.version>2.29.0</allure.version>
+    <restassured.version>5.5.7</restassured.version>
+    <json.version>20251224</json.version>
+    <faker.version>1.0.2</faker.version>
   </properties>
   
   <dependencies>
@@ -29,7 +32,7 @@
 	    <scope>test</scope>
 		</dependency>
   </dependencies>
-  
+   
   <dependencyManagement>
     <dependencies>
       <!-- Source: https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
@@ -85,16 +88,48 @@
       <dependency>
       	<groupId>org.apache.logging.log4j</groupId>
         <artifactId>log4j-slf4j-impl</artifactId>
-        <version>2.25.3</version>
+        <version>${log4j.version}</version>
         <scope>compile</scope>
       </dependency>
-      <!--  Source: https://mvnrepository.com/artifact/com.aventstack/extentreports  -->
       <dependency>
-        <groupId>com.aventstack</groupId>
-        <artifactId>extentreports</artifactId>
-        <version>${extent.version}</version>
-        <scope>compile</scope>
+      	<groupId>io.qameta.allure</groupId>
+		<artifactId>allure-cucumber7-jvm</artifactId>
+        <version>${allure.version}</version>
+        <scope>test</scope>
       </dependency>
+      <!-- Source: https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+	  <dependency>
+		<groupId>io.rest-assured</groupId>
+		<artifactId>rest-assured</artifactId>
+		<version>${restassured.version}</version>
+		<scope>test</scope>
+	  </dependency>
+	  	<!-- Source: https://mvnrepository.com/artifact/io.rest-assured/json-path -->
+	  <dependency>
+	    <groupId>io.rest-assured</groupId>
+	    <artifactId>json-path</artifactId>
+	    <version>${restassured.version}</version>
+	    <scope>compile</scope>
+	  </dependency>
+	  <!-- Source: https://mvnrepository.com/artifact/org.json/json -->
+	  <dependency>
+	    <groupId>org.json</groupId>
+	    <artifactId>json</artifactId>
+	    <version>${json.version}</version>
+	    <scope>compile</scope>
+	  </dependency>
+	  <!-- Source: https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
+	  <dependency>
+	    <groupId>io.rest-assured</groupId>
+	    <artifactId>json-schema-validator</artifactId>
+	    <version>${restassured.version}</version>
+	    <scope>compile</scope>
+	  </dependency>
+	  <dependency>
+	    <groupId>com.github.javafaker</groupId>
+	    <artifactId>javafaker</artifactId>
+	    <version>${faker.version}</version>
+	  </dependency>
     </dependencies>
   </dependencyManagement>
 

@@ -6,7 +6,7 @@
     <artifactId>automationexercise-hybrid-framework</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-
+ 
   <artifactId>ui-automation</artifactId>
 
   <dependencies>
@@ -34,6 +34,10 @@
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+	  <artifactId>allure-cucumber7-jvm</artifactId>
     </dependency>
   </dependencies>
 </project>

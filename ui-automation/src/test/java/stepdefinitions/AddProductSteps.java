@@ -5,7 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 import driver.DriverFactory;
+<<<<<<< HEAD
 import io.cucumber.java.en.Given;
+=======
+>>>>>>> 96c8351583b95977e30499e9dff4b17c06b92e1c
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import logger.LogsFactory;
