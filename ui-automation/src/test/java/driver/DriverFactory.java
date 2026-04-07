@@ -33,13 +33,16 @@ public class DriverFactory {
 				throw new IllegalArgumentException("Invalid browser");
 		}
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		driverThread.set(driver);
 		return driver;
 	}
 	
 	public static WebDriver getDriver() {
-		return driverThread.get();
+	    if (driverThread.get() == null) {
+	        throw new RuntimeException("Driver is not initialized. Check Hooks.");
+	    }
+	    return driverThread.get();
 	}
 	
 	public static void quitDriver() {
