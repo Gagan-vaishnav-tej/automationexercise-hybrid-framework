@@ -7,8 +7,6 @@ import io.cucumber.testng.CucumberOptions;
 		features = "src/test/resources/features",
 		glue = {"stepdefinitions", "hooks"},
 
-		tags="@RemoveProduct",
-
 	    plugin = {
 	        "pretty",
 	        "html:target/cucumber-reports/report.html",

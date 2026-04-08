@@ -8,7 +8,7 @@ Feature: Delete User Account APIs
 
 
   @delete-negative
-Scenario: TC6. Delete User Account (Negative - Invalid Credentials)
+ Scenario: TC6. Delete User Account (Negative - Invalid Credentials)
   Given user tries to delete with invalid credentials
   When user tries to delete account with invalid credentials
   Then delete account response status code should be 200
