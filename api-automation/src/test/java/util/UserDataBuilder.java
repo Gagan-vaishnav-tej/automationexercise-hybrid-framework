@@ -5,9 +5,9 @@ import pojo.User;
 import config.ConfigReader;
 
 public class UserDataBuilder {
-
+	private static  User user;
     public static User getRegisterUser() {
-        User user = new User();
+        user= new User();
 
         user.setName(ConfigReader.getProperty("register.name"));
         user.setEmail(generateDynamicEmail());
@@ -28,7 +28,34 @@ public class UserDataBuilder {
 
         return user;
     }
-
+    public static User updateUser()
+    {
+    	if(user == null){
+            throw new RuntimeException("User not created before update!");
+        }
+		user.setName(ConfigReader.getProperty("update.name"));
+    	user.setEmail(user.getEmail());
+    	user.setPassword(ConfigReader.getProperty("register.password"));
+    	user.setTitle(ConfigReader.getProperty("update.title"));
+    	user.setBirthDate(ConfigReader.getProperty("update.dob.day"));
+    	user.setBirthMonth(ConfigReader.getProperty("update.dob.month"));
+    	user.setBirthYear(ConfigReader.getProperty("update.dob.year"));
+    	user.setFirstName(ConfigReader.getProperty("update.firstname"));
+    	user.setLastName(ConfigReader.getProperty("update.lastname"));
+    	user.setCompany(ConfigReader.getProperty("update.company"));
+    	user.setAddress1(ConfigReader.getProperty("update.address"));
+    	user.setCountry(ConfigReader.getProperty("update.country"));
+    	user.setState(ConfigReader.getProperty("update.state"));
+    	user.setCity(ConfigReader.getProperty("update.city"));
+    	user.setZipcode(ConfigReader.getProperty("update.zipcode"));
+    	user.setMobileNumber(ConfigReader.getProperty("update.mobile"));
+    	
+    	return user;
+    	
+    }
+    public static void setUser(User createdUser) {
+        user = createdUser;
+    }
     private static String generateDynamicEmail() {
         return ConfigReader.getProperty("register.email") 
                 + System.currentTimeMillis() + "@mail.com";

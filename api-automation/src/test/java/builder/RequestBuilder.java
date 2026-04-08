@@ -63,5 +63,14 @@ public class RequestBuilder {
 	    map.put("mobile_number", user.getMobileNumber());
 	    return map;
 	}
+	public Response putUpdateAccount(String endpoint, User user)
+	{
+		Map<String, String>params=userToFormParams(user);
+		RequestSpecification req=buildRequest().contentType("application/x-www-form-urlencoded");
+		params.forEach(req::formParam);
+		return req.when().put(endpoint)
+	              .then().log().ifError()
+	              .extract().response();
+	}
 }
 

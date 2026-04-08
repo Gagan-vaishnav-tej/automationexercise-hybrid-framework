@@ -6,4 +6,5 @@ public class ApiEndpoints {
 	public static final String getProducts_url = "/productsList";
 	public static final String getSingleProduct_url = "/searchProduct";
 	public static final String registerUser_url = "/createAccount";
+	public static final String updateUser_url="/updateAccount ";
 }
