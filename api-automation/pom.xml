@@ -5,6 +5,7 @@
     <groupId>com.automationexercise</groupId>
     <artifactId>automationexercise-hybrid-framework</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <artifactId>api-automation</artifactId>
