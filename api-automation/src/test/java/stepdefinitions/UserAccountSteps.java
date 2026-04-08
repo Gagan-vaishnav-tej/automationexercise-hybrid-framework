@@ -31,7 +31,7 @@ public class UserAccountSteps {
 	    validator.validateStatusCode(response, statusCode);
 	}
 	
-	@Then("reponse should contains {string} message")
+	@Then("response should contains {string} message")
 	public void validateUserCreatedMessage(String string) {
 	    validator.validateMessage(response, string);
 	}

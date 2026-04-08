@@ -31,7 +31,7 @@ public class RequestBuilder {
 				.formParam("search_product", pathParameter)
 				.when()
 					.post(endpoint)
-				.then().log().all().extract().response();
+				.then().log().ifError().extract().response();
 	}
 	
 	public Response postCreateAccount(String endpoint, User user) {

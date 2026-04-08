@@ -10,10 +10,11 @@ import io.cucumber.testng.CucumberOptions;
         "pretty",
         "html:target/cucumber-reports/report.html",
         "json:target/cucumber-reports/report.json",
-        "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
+        "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
+        "rerun:target/failed_scenarios.txt",
     },
     monochrome = true
 )
-public class ProductRunner extends AbstractTestNGCucumberTests {
+public class APITestRunner extends AbstractTestNGCucumberTests {
 
 }
