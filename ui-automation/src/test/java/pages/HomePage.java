@@ -15,11 +15,8 @@ public class HomePage {
 	private By loggedInAsText = By.xpath("//div[contains(@class,'shop-menu')]//b");
 	private By deleteAccountButton = By.cssSelector("a[href='/delete_account']");
 	private By productsButton=By.cssSelector("a[href='/products']");
-<<<<<<< HEAD
-	
-=======
 	private By cartButton = By.xpath("//a[@href='/view_cart']");
->>>>>>> 96c8351583b95977e30499e9dff4b17c06b92e1c
+
 	public void clickSignupLogin() {
 		driver.findElement(signupLoginButton).click();
 	}
@@ -45,11 +42,9 @@ public class HomePage {
 	{
 		driver.findElement(productsButton).click();
 	}
-<<<<<<< HEAD
-=======
 	public void clickCart()
 	{
 		driver.findElement(cartButton).click();
 	}
->>>>>>> 96c8351583b95977e30499e9dff4b17c06b92e1c
+
 }
