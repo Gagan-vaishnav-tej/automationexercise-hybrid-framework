@@ -5,7 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
 			features = "@target/failed_scenarios.txt",
-			glue = {"stepdefinitions", "hooks"},
+			glue = {"com.automationexercise.ui.stepdefinitions", "com.automationexercise.ui.hooks"},
 		    plugin = {
 		        "pretty",
 		        "html:target/cucumber-reports/report.html",

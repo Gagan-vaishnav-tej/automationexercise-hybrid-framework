@@ -5,7 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
 		features = "src/test/resources/features",
-		glue = {"stepdefinitions", "hooks"},
+		glue = {"com.automationexercise.ui.stepdefinitions", "com.automationexercise.ui.hooks"},
 
 	    plugin = {
 	        "pretty",

@@ -3,7 +3,7 @@
 <suite name="Suite">
   <test thread-count="5" name="UI-Test">
   	<classes>
-  		<class name="runners.UITestRunner"></class>
+  		<class name="com.automationexercise.ui.runners.UITestRunner"></class>
   	</classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
