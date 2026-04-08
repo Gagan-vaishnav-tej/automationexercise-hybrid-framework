@@ -6,9 +6,12 @@ import org.testng.Assert;
 
 import driver.DriverFactory;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import io.cucumber.java.en.Given;
 =======
 >>>>>>> 96c8351583b95977e30499e9dff4b17c06b92e1c
+=======
+>>>>>>> 7b6596712ce26c8f2c1efd03e4bf5e3928ef8a8c
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import logger.LogsFactory;

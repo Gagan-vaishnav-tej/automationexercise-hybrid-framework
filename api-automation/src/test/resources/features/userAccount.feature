@@ -4,5 +4,3 @@ Feature: User Account APIs
 	    When user registers a new account
 		Then response status code for registration should be 201
 	    And reponse should contains "User created!" message
-	    
-	
