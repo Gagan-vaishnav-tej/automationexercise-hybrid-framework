@@ -63,6 +63,7 @@ public class RequestBuilder {
 	    map.put("mobile_number", user.getMobileNumber());
 	    return map;
 	}
+
 	public Response putUpdateAccount(String endpoint, User user)
 	{
 		Map<String, String>params=userToFormParams(user);
@@ -72,5 +73,17 @@ public class RequestBuilder {
 	              .then().log().ifError()
 	              .extract().response();
 	}
+	public Response deleteAccount(String endpoint, String email, String password) {
+	    return buildRequest()
+	            .contentType("application/x-www-form-urlencoded")
+	            .formParam("email", email)
+	            .formParam("password", password)
+	            .when()
+	            .delete(endpoint)
+	            .then()
+	            .log().ifError()
+	            .extract().response();
+	}
+
 }
 
