@@ -1,6 +1,6 @@
 package com.automationexercise.api.stepdefinitions;
 
-import com.automationexercise.api.clients.UserAccountApiClient;
+import com.automationexercise.api.clients.UserApiClient;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
@@ -10,13 +10,13 @@ import com.automationexercise.api.validators.UserValidator;
 
 public class UserAccountSteps {
 	private User user;
-	private UserAccountApiClient client;
+	private UserApiClient client;
 	private Response response;
 	private UserValidator validator;
 	
 	public UserAccountSteps()
 	{
-		client = new UserAccountApiClient();
+		client = new UserApiClient();
 		validator = new UserValidator();
 	}
 	

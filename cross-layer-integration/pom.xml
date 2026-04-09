@@ -1,15 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+ <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <groupId>com.automationexercise</groupId>
     <artifactId>automationexercise-hybrid-framework</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
- 
-  <artifactId>ui-automation</artifactId>
+  <artifactId>cross-layer-integration</artifactId>
 
-  <dependencies>
+
+<dependencies>
     <dependency>
       <groupId>com.automationexercise</groupId>
       <artifactId>common</artifactId>
@@ -21,6 +21,11 @@
 	  <version>0.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
+    	<groupId>com.automationexercise</groupId>
+    	<artifactId>ui-automation</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
     </dependency>
@@ -28,6 +33,28 @@
       <groupId>io.github.bonigarcia</groupId>
       <artifactId>webdrivermanager</artifactId>
     </dependency>
+    
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>json-path</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>json-schema-validator</artifactId>
+    </dependency>
+
+    
     <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-java</artifactId>
@@ -44,5 +71,7 @@
       <groupId>io.qameta.allure</groupId>
 	  <artifactId>allure-cucumber7-jvm</artifactId>
     </dependency>
-  </dependencies>
-</project>
+
+</dependencies>
+  
+  </project>

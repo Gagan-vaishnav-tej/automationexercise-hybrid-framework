@@ -9,6 +9,7 @@
     <module>ui-automation</module>
     <module>api-automation</module>
     <module>common</module>
+    <module>cross-layer-integration</module>
   </modules>
 
   <properties>
@@ -68,7 +69,7 @@
         <groupId>org.testng</groupId>
         <artifactId>testng</artifactId>
         <version>${testng.version}</version>
-        <scope>test</scope>
+        <scope>compile</scope>
       </dependency>
       <!-- Source: https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
       <dependency>
@@ -95,14 +96,14 @@
       	<groupId>io.qameta.allure</groupId>
 		<artifactId>allure-cucumber7-jvm</artifactId>
         <version>${allure.version}</version>
-        <scope>test</scope>
+        <scope>compile</scope>
       </dependency>
       <!-- Source: https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
 	  <dependency>
 		<groupId>io.rest-assured</groupId>
 		<artifactId>rest-assured</artifactId>
 		<version>${restassured.version}</version>
-		<scope>test</scope>
+		<scope>compile</scope>
 	  </dependency>
 	  	<!-- Source: https://mvnrepository.com/artifact/io.rest-assured/json-path -->
 	  <dependency>

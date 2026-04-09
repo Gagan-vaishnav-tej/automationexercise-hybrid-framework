@@ -37,10 +37,6 @@
       <artifactId>json-schema-validator</artifactId>
     </dependency>
 
-    <dependency>
-      <groupId>com.github.javafaker</groupId>
-      <artifactId>javafaker</artifactId>
-    </dependency>
 
     <dependency>
       <groupId>org.testng</groupId>

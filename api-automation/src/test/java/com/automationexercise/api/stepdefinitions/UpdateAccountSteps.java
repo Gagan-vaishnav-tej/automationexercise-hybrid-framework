@@ -1,22 +1,23 @@
 package com.automationexercise.api.stepdefinitions;
 
-import com.automationexercise.api.clients.UpdateUserAccountApiClient;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import io.restassured.response.Response;
+import com.automationexercise.api.clients.UserApiClient;
 import com.automationexercise.api.payloads.User;
 import com.automationexercise.api.util.UserDataBuilder;
 import com.automationexercise.api.validators.UserValidator;
 
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import io.restassured.response.Response;
+
 public class UpdateAccountSteps {
 	private User user;
-	private UpdateUserAccountApiClient client;
+	private UserApiClient client;
 	private Response response;
 	private UserValidator validator;
 	
 	public UpdateAccountSteps()
 	{
-		client=new UpdateUserAccountApiClient();
+		client=new UserApiClient();
 		validator=new UserValidator();
 	}
 	@When("user sends put request to update the account")

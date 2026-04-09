@@ -1,18 +1,19 @@
 package com.automationexercise.api.stepdefinitions;
 
-import com.automationexercise.api.clients.DeleteUserAccountApiClient;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import io.restassured.response.Response;
+import com.automationexercise.api.clients.UserApiClient;
 import com.automationexercise.api.payloads.User;
 import com.automationexercise.api.util.UserDataBuilder;
 import com.automationexercise.api.validators.UserValidator;
 
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import io.restassured.response.Response;
+
 public class DeleteUserAccountSteps {
 
     private Response response;
-    private final DeleteUserAccountApiClient apiClient = new DeleteUserAccountApiClient();
+    private final UserApiClient apiClient = new UserApiClient();
     private final UserValidator validator = new UserValidator();
 
     @When("user deletes the account")

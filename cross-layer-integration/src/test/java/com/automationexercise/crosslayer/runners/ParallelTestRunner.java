@@ -1,13 +1,13 @@
+package com.automationexercise.crosslayer.runners;
 
-package com.automationexercise.ui.runners;
+import org.testng.annotations.DataProvider;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
 		features = "src/test/resources/features",
-		glue = {"com.automationexercise.ui.stepdefinitions", "com.automationexercise.ui.hooks"},
-
+		glue = {"com.automationexercise.api.stepdefinitions"},
 	    plugin = {
 	        "pretty",
 	        "html:target/cucumber-reports/report.html",
@@ -17,6 +17,13 @@ import io.cucumber.testng.CucumberOptions;
 	    },
 	    monochrome = true
 	)
-public class UITestRunner extends AbstractTestNGCucumberTests{
 
+
+public class ParallelTestRunner extends AbstractTestNGCucumberTests{
+
+	@Override
+	@DataProvider(parallel = true)
+	public Object[][] scenarios() {
+		return super.scenarios();
+	}
 }
