@@ -39,5 +39,7 @@ public class UserAccountSteps {
 	@Then("response should match create user reponse JSON schema")
 	public void validateUserResponseSchema() {
 	    validator.validateUserResponseSchema(response);
+	    // Deleting user so that is does not reside in website
+	    client.deleteUserAccount(user.getEmail(), user.getPassword());
 	}
 }

@@ -12,13 +12,16 @@ import io.restassured.response.Response;
 
 public class DeleteUserAccountSteps {
 
+	private User user;
     private Response response;
     private final UserApiClient apiClient = new UserApiClient();
     private final UserValidator validator = new UserValidator();
 
     @When("user deletes the account")
     public void userDeletesTheAccount() {
-        User user = UserDataBuilder.getUser();
+    	// Creating a a dummy user to delete
+        user = UserDataBuilder.getRegisterUser();
+        apiClient.resgisterUser(user);
         response = apiClient.deleteUserAccount(user.getEmail(), user.getPassword());
     }
 
