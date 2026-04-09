@@ -32,7 +32,7 @@ public class UserDataBuilder {
 
     public static User updateUser() {
         if (user == null) {
-            throw new RuntimeException("User not created before update!");
+            user = new User();
         }
 
         user.setName(ConfigReader.getProperty("update.name"));
