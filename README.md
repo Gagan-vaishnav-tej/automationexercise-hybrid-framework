@@ -464,23 +464,36 @@ To generate a static HTML export (for sharing):
 allure generate target/allure-results --clean -o allure-report
 ```
 
+To generate a **single self-contained HTML file** (viewable in any browser without Allure installed or a server):
+
+```bash
+allure generate target/allure-results --single-file --clean -o allure-report
+```
+
+This produces a single `index.html` file inside `allure-report/` that bundles all report data, screenshots, and assets into one portable file — ideal for sharing via email or attaching to CI artifacts without any additional setup.
+
+---
+
 ### Cucumber HTML Report
 
 Located at: `target/cucumber-reports/report.html`  
 Open directly in any browser — no server required.
+
+---
 
 ### All Report Artifacts
 
 | Artifact | Path | Description |
 |----------|------|-------------|
 | Allure Results | `target/allure-results/` | Raw data for `allure serve` |
+| Allure Static HTML | `allure-report/` | Multi-file static export (requires local server or browser with file access) |
+| Allure Single File | `allure-report/index.html` | Fully self-contained single HTML file, no Allure required |
 | Cucumber HTML | `target/cucumber-reports/report.html` | Standalone HTML report |
 | Cucumber JSON | `target/cucumber-reports/report.json` | CI tool integration |
 | TestNG Report | `test-output/index.html` | TestNG suite summary |
 | Log File | `target/logs/automation.log` | Full Log4j2 execution log |
 | Failed Scenarios | `target/failed_scenarios.txt` | Input for `FailedTestRunner` |
 
----
 
 ## 10. Module Breakdown
 
