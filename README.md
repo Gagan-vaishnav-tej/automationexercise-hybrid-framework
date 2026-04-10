@@ -368,16 +368,6 @@ mvn clean test -pl ui-automation -Dcucumber.filter.tags="@Login or @Register"
 mvn clean test -pl ui-automation -Dcucumber.filter.tags="@UI and not @AddProduct"
 ```
 
-Available tags in the framework:
-
-| Tag | Module | Covers |
-|---|---|---|
-| `@Register` | ui-automation | User registration scenario |
-| `@Login` | ui-automation | Valid and invalid login scenarios |
-| `@AddProduct` | ui-automation | Add product to cart scenario |
-| `@RemoveProduct` | ui-automation | Remove product from cart scenario |
-| `@UI` | ui-automation | All UI scenarios |
-
 ---
 
 ### Run via Runner Class (IDE)
@@ -388,7 +378,7 @@ Each module provides runner classes that can be executed directly from an IDE su
 
 | Runner Class | Description |
 |---|---|
-| `TestRunner` | Runs all UI scenarios sequentially. Default runner for standard execution. |
+| `UITestRunner` | Runs all UI scenarios sequentially. Default runner for standard execution. |
 | `ParallelRunner` | Runs all UI scenarios in parallel across multiple browser sessions. |
 | `FailedTestRunner` | Re-runs only the scenarios that failed in the previous run. |
 
@@ -396,7 +386,9 @@ Each module provides runner classes that can be executed directly from an IDE su
 
 | Runner Class | Description |
 |---|---|
-| `ProductRunner` | Runs all API scenarios across both `product.feature` and `userAccount.feature`. |
+| `APITestRunner` | Runs all API scenarios sequentially. Default runner for standard execution. |
+| `ParallelRunner` | Runs all API scenarios in parallel across multiple browser sessions. |
+| `FailedTestRunner` | Re-runs only the scenarios that failed in the previous run. |
 
 **Cross-Layer Module** — `cross-layer-integration/src/test/java/com/automationexercise/crosslayer/runners/`
 
