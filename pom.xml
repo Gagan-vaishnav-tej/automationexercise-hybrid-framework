@@ -4,9 +4,134 @@
   <artifactId>automationexercise-hybrid-framework</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
+
   <modules>
-  	<module>ui-automation</module>
-  	<module>api-automation</module>
-  	<module>common</module>
+    <module>ui-automation</module>
+    <module>api-automation</module>
+    <module>common</module>
+    <module>cross-layer-integration</module>
   </modules>
+
+  <properties>
+    <java.version>21</java.version>
+    <selenium.version>4.41.0</selenium.version>
+    <webdrivermanager.version>6.3.3</webdrivermanager.version>
+    <cucumber.version>7.34.3</cucumber.version>
+    <testng.version>7.12.0</testng.version>
+    <log4j.version>2.25.3</log4j.version>
+    <allure.version>2.29.0</allure.version>
+    <restassured.version>5.5.7</restassured.version>
+    <json.version>20251224</json.version>
+    <faker.version>1.0.2</faker.version>
+  </properties>
+  
+  <dependencies>
+  	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-simple</artifactId>
+	    <version>2.0.9</version>
+	    <scope>test</scope>
+		</dependency>
+  </dependencies>
+   
+  <dependencyManagement>
+    <dependencies>
+      <!-- Source: https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>${selenium.version}</version>
+        <scope>compile</scope>
+      </dependency>
+      <!-- Source: https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+      <dependency>
+        <groupId>io.github.bonigarcia</groupId>
+        <artifactId>webdrivermanager</artifactId>
+        <version>${webdrivermanager.version}</version>
+        <scope>compile</scope>
+      </dependency>
+      <!-- Source: https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+      <dependency>
+        <groupId>io.cucumber</groupId>
+        <artifactId>cucumber-java</artifactId>
+        <version>${cucumber.version}</version>
+        <scope>compile</scope>
+      </dependency>
+      <!-- Source: https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
+      <dependency>
+        <groupId>io.cucumber</groupId>
+        <artifactId>cucumber-testng</artifactId>
+        <version>${cucumber.version}</version>
+        <scope>compile</scope>
+      </dependency>
+      <!-- Source: https://mvnrepository.com/artifact/org.testng/testng -->
+      <dependency>
+        <groupId>org.testng</groupId>
+        <artifactId>testng</artifactId>
+        <version>${testng.version}</version>
+        <scope>compile</scope>
+      </dependency>
+      <!-- Source: https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>${log4j.version}</version>
+        <scope>compile</scope>
+      </dependency>
+      <dependency>
+        <!-- Source: https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-api</artifactId>
+        <version>${log4j.version}</version>
+        <scope>compile</scope>
+      </dependency>
+      <!-- Source: https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl -->
+      <dependency>
+      	<groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-slf4j-impl</artifactId>
+        <version>${log4j.version}</version>
+        <scope>compile</scope>
+      </dependency>
+      <dependency>
+      	<groupId>io.qameta.allure</groupId>
+		<artifactId>allure-cucumber7-jvm</artifactId>
+        <version>${allure.version}</version>
+        <scope>compile</scope>
+      </dependency>
+      <!-- Source: https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+	  <dependency>
+		<groupId>io.rest-assured</groupId>
+		<artifactId>rest-assured</artifactId>
+		<version>${restassured.version}</version>
+		<scope>compile</scope>
+	  </dependency>
+	  	<!-- Source: https://mvnrepository.com/artifact/io.rest-assured/json-path -->
+	  <dependency>
+	    <groupId>io.rest-assured</groupId>
+	    <artifactId>json-path</artifactId>
+	    <version>${restassured.version}</version>
+	    <scope>compile</scope>
+	  </dependency>
+	  <!-- Source: https://mvnrepository.com/artifact/org.json/json -->
+	  <dependency>
+	    <groupId>org.json</groupId>
+	    <artifactId>json</artifactId>
+	    <version>${json.version}</version>
+	    <scope>compile</scope>
+	  </dependency>
+	  <!-- Source: https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
+	  <dependency>
+	    <groupId>io.rest-assured</groupId>
+	    <artifactId>json-schema-validator</artifactId>
+	    <version>${restassured.version}</version>
+	    <scope>compile</scope>
+	  </dependency>
+	  <dependency>
+	    <groupId>com.github.javafaker</groupId>
+	    <artifactId>javafaker</artifactId>
+	    <version>${faker.version}</version>
+	  </dependency>
+    </dependencies>
+  </dependencyManagement>
+
 </project>
