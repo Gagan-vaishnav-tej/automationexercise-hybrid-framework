@@ -4,8 +4,6 @@ import com.automationexercise.api.payloads.User;
 
 import config.ConfigReader;
 
-
-
 public class UserDataBuilder {
 
     public static User getcreateUserData() {

@@ -43,7 +43,7 @@ public class HybridSteps {
 	
 	@When("user registers a new account via API")
 	public void sendPostrequestForRegistation() {
-		user = UserDataBuilder.getRegisterUser();
+		user = UserDataBuilder.getcreateUserData();
 		response = client.resgisterUser(user);
 	}
 
