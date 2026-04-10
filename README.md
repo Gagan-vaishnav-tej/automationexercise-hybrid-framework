@@ -282,18 +282,25 @@ base.url=https://automationexercise.com/api
 |----------------|-----------------|
 | `chrome` | Google Chrome (default) |
 | `edge` | Microsoft Edge |
+| `firefox` | Mozilla Firefox |
 
 ---
 
 ## 7. Running Tests
 
-All commands are run from the **project root directory**.
+## How to Run Tests
 
-### Run All Tests (UI + API, Sequential)
+All commands are run from the **project root directory** unless stated otherwise.
+
+---
+
+### Run All Tests (UI + API + Cross-Layer, Sequential)
 
 ```bash
 mvn clean test
 ```
+
+---
 
 ### Run UI Tests Only
 
@@ -301,11 +308,15 @@ mvn clean test
 mvn clean test -pl ui-automation
 ```
 
+---
+
 ### Run API Tests Only
 
 ```bash
 mvn clean test -pl api-automation
 ```
+
+---
 
 ### Run Cross-Layer (Hybrid) Tests Only
 
@@ -313,44 +324,116 @@ mvn clean test -pl api-automation
 mvn clean test -pl cross-layer-integration
 ```
 
+---
+
 ### Run a Specific Feature File
 
+Run from the **module directory**, not the project root:
+
 ```bash
-mvn clean test -pl ui-automation -Dcucumber.features=src/test/resources/features/f2_login.feature
+# UI — Register
+mvn clean test -pl ui-automation -Dcucumber.features=src/test/resources/features/register.feature
+
+# UI — Login
+mvn clean test -pl ui-automation -Dcucumber.features=src/test/resources/features/login.feature
+
+# UI — Add Product
+mvn clean test -pl ui-automation -Dcucumber.features=src/test/resources/features/addProduct.feature
+
+# UI — Remove Product
+mvn clean test -pl ui-automation -Dcucumber.features=src/test/resources/features/removeProduct.feature
+
+# API — Products
+mvn clean test -pl api-automation -Dcucumber.features=src/test/resources/features/product.feature
+
+# API — User Account
+mvn clean test -pl api-automation -Dcucumber.features=src/test/resources/features/userAccount.feature
+
+# Cross-Layer — Hybrid
+mvn clean test -pl cross-layer-integration -Dcucumber.features=src/test/resources/features/hybrid.feature
 ```
+
+---
 
 ### Run Tests by Tag
 
 ```bash
-mvn clean test -pl ui-automation -Dcucumber.filter.tags="@smoke"
-mvn clean test -pl ui-automation -Dcucumber.filter.tags="@regression and not @wip"
+# Run a single tag
+mvn clean test -pl ui-automation -Dcucumber.filter.tags="@Login"
+
+# Run multiple tags
+mvn clean test -pl ui-automation -Dcucumber.filter.tags="@Login or @Register"
+
+# Exclude a tag
+mvn clean test -pl ui-automation -Dcucumber.filter.tags="@UI and not @AddProduct"
 ```
+
+Available tags in the framework:
+
+| Tag | Module | Covers |
+|---|---|---|
+| `@Register` | ui-automation | User registration scenario |
+| `@Login` | ui-automation | Valid and invalid login scenarios |
+| `@AddProduct` | ui-automation | Add product to cart scenario |
+| `@RemoveProduct` | ui-automation | Remove product from cart scenario |
+| `@UI` | ui-automation | All UI scenarios |
+
+---
+
+### Run via Runner Class (IDE)
+
+Each module provides runner classes that can be executed directly from an IDE such as IntelliJ IDEA or Eclipse by right-clicking the class and selecting **Run as TestNG Test**.
+
+**UI Module** — `ui-automation/src/test/java/runners/`
+
+| Runner Class | Description |
+|---|---|
+| `TestRunner` | Runs all UI scenarios sequentially. Default runner for standard execution. |
+| `ParallelRunner` | Runs all UI scenarios in parallel across multiple browser sessions. |
+| `FailedTestRunner` | Re-runs only the scenarios that failed in the previous run. |
+
+**API Module** — `api-automation/src/test/java/runners/`
+
+| Runner Class | Description |
+|---|---|
+| `ProductRunner` | Runs all API scenarios across both `product.feature` and `userAccount.feature`. |
+
+**Cross-Layer Module** — `cross-layer-integration/src/test/java/com/automationexercise/crosslayer/runners/`
+
+| Runner Class | Description |
+|---|---|
+| `CrossLayerTestRunner` | Runs the hybrid cross-layer scenario sequentially. |
+| `FailedTestRunner` | Re-runs only the failed cross-layer scenarios from the previous run. |
+
+---
 
 ### Re-run Only Failed Scenarios
 
-After a run that produced `target/failed_scenarios.txt`:
+After any run that produces a `target/failed_scenarios.txt`, failed scenarios can be re-executed using the `FailedTestRunner` available in the UI and cross-layer modules:
 
 ```bash
+# Re-run failed UI scenarios
 mvn test -pl ui-automation -Dsurefire.suiteXmlFiles=testng-rerun.xml
-```
+
+# Re-run failed cross-layer scenarios
+mvn test -pl cross-layer-integration -Dsurefire.suiteXmlFiles=testng-rerun.xml
+``
 
 ---
 
 ## 8. Parallel Execution
 
-The framework supports **scenario-level parallel execution** in the UI module. Three runners are available:
-
-| Runner | Class | Behaviour |
-|--------|-------|-----------|
-| `UITestRunner` | `runners.UITestRunner` | Sequential — single thread, for debugging and CI baseline |
-| `ParallelTestRunner` | `runners.ParallelTestRunner` | Parallel — multiple browser sessions run concurrently |
-| `FailedTestRunner` | `runners.FailedTestRunner` | Re-runs only scenarios that failed in the previous run |
+The framework supports **scenario-level parallel execution** in the `ui-automation` module via the `ParallelRunner` class and `testng-parallel.xml`.
 
 ### Run in Parallel Mode
 
 ```bash
 mvn clean test -pl ui-automation -Dsurefire.suiteXmlFiles=testng-parallel.xml
 ```
+
+### How It Works
+
+`ParallelRunner` overrides the `scenarios()` `@DataProvider` from `AbstractTestNGCucumberTests` with `parallel = true`, causing each Cucumber scenario to run on its own thread with its own isolated browser session.
 
 ### How Thread Safety Works
 
