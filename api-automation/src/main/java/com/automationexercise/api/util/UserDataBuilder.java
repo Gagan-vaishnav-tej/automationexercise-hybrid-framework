@@ -29,6 +29,25 @@ public class UserDataBuilder {
 
         return user;
     }
+    
+    public static User updateUser(User user)
+    {
+    	user.setTitle(ConfigReader.getProperty("register.title"));
+        user.setBirthDate(ConfigReader.getProperty("update.dob.day"));
+        user.setBirthMonth(ConfigReader.getProperty("update.dob.month"));
+        user.setBirthYear(ConfigReader.getProperty("update.dob.year"));
+        user.setFirstName(ConfigReader.getProperty("update.firstname"));
+        user.setLastName(ConfigReader.getProperty("update.lastname"));
+        user.setCompany(ConfigReader.getProperty("update.company"));
+        user.setAddress1(ConfigReader.getProperty("update.address"));
+        user.setCountry(ConfigReader.getProperty("update.country"));
+        user.setState(ConfigReader.getProperty("update.state"));
+        user.setCity(ConfigReader.getProperty("update.city"));
+        user.setZipcode(ConfigReader.getProperty("update.zipcode"));
+        user.setMobileNumber(ConfigReader.getProperty("update.mobile"));
+    	user.setName(ConfigReader.getProperty("update.name"));
+    	return user;
+    }
 
 	private static String generateDynamicEmail() {
         return ConfigReader.getProperty("register.email") + java.util.UUID.randomUUID() + System.currentTimeMillis()+ System.currentTimeMillis() + "@mail.com";

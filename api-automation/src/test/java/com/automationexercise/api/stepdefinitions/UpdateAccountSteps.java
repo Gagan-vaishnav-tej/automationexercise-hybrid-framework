@@ -24,6 +24,7 @@ public class UpdateAccountSteps {
 	@When("user sends put request to update the account")
 	public void sendsPutRequesttoUpdateUser() {
 	    user = UserFactory.getUser();
+	    user = UserDataBuilder.updateUser(user);
 	    response=client.updateUser(user);
 	}
 	@Then("response code for registration should be {int}")
