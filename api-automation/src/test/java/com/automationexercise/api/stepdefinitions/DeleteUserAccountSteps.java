@@ -3,6 +3,7 @@ package com.automationexercise.api.stepdefinitions;
 import com.automationexercise.api.clients.UserApiClient;
 import com.automationexercise.api.payloads.User;
 import com.automationexercise.api.util.UserDataBuilder;
+import com.automationexercise.api.util.UserFactory;
 import com.automationexercise.api.validators.UserValidator;
 
 import io.cucumber.java.en.Given;
@@ -19,9 +20,7 @@ public class DeleteUserAccountSteps {
 
     @When("user deletes the account")
     public void userDeletesTheAccount() {
-    	// Creating a a dummy user to delete
-        user = UserDataBuilder.getRegisterUser();
-        apiClient.resgisterUser(user);
+        user = UserFactory.getUser();
         response = apiClient.deleteUserAccount(user.getEmail(), user.getPassword());
     }
 

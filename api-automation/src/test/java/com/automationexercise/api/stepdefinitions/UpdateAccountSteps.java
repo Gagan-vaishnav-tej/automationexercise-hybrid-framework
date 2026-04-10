@@ -3,6 +3,7 @@ package com.automationexercise.api.stepdefinitions;
 import com.automationexercise.api.clients.UserApiClient;
 import com.automationexercise.api.payloads.User;
 import com.automationexercise.api.util.UserDataBuilder;
+import com.automationexercise.api.util.UserFactory;
 import com.automationexercise.api.validators.UserValidator;
 
 import io.cucumber.java.en.Then;
@@ -22,7 +23,7 @@ public class UpdateAccountSteps {
 	}
 	@When("user sends put request to update the account")
 	public void sendsPutRequesttoUpdateUser() {
-	    user=UserDataBuilder.updateUser();
+	    user = UserFactory.getUser();
 	    response=client.updateUser(user);
 	}
 	@Then("response code for registration should be {int}")

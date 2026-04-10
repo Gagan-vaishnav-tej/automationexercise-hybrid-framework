@@ -1,17 +1,19 @@
 package com.automationexercise.api.util;
 
-import config.ConfigReader;
 import com.automationexercise.api.payloads.User;
+
+import config.ConfigReader;
+
+
 
 public class UserDataBuilder {
 
-    private static User user;
+    public static User getcreateUserData() {
+        User user = new User();
 
-    public static User getRegisterUser() {
-        user = new User();
-
+        String email = generateDynamicEmail();
         user.setName(ConfigReader.getProperty("register.name"));
-        user.setEmail(generateDynamicEmail());
+        user.setEmail(email);
         user.setPassword(ConfigReader.getProperty("register.password"));
         user.setTitle(ConfigReader.getProperty("register.title"));
         user.setBirthDate(ConfigReader.getProperty("register.dob.day"));
@@ -30,44 +32,7 @@ public class UserDataBuilder {
         return user;
     }
 
-    public static User updateUser() {
-        if (user == null) {
-            user = new User();
-        }
-
-        user.setName(ConfigReader.getProperty("update.name"));
-        user.setEmail(ConfigReader.getProperty("login.email"));
-        user.setPassword(ConfigReader.getProperty("login.password"));
-        user.setTitle(ConfigReader.getProperty("update.title"));
-        user.setBirthDate(ConfigReader.getProperty("update.dob.day"));
-        user.setBirthMonth(ConfigReader.getProperty("update.dob.month"));
-        user.setBirthYear(ConfigReader.getProperty("update.dob.year"));
-        user.setFirstName(ConfigReader.getProperty("update.firstname"));
-        user.setLastName(ConfigReader.getProperty("update.lastname"));
-        user.setCompany(ConfigReader.getProperty("update.company"));
-        user.setAddress1(ConfigReader.getProperty("update.address"));
-        user.setCountry(ConfigReader.getProperty("update.country"));
-        user.setState(ConfigReader.getProperty("update.state"));
-        user.setCity(ConfigReader.getProperty("update.city"));
-        user.setZipcode(ConfigReader.getProperty("update.zipcode"));
-        user.setMobileNumber(ConfigReader.getProperty("update.mobile"));
-
-        return user;
-    }
-
-    public static void setUser(User createdUser) {
-        user = createdUser;
-    }
-
-    public static User getUser() {
-    	
-        if (user == null) {
-            throw new RuntimeException("User not created!");
-        }
-        return user;
-    }
-
-    private static String generateDynamicEmail() {
-        return ConfigReader.getProperty("register.email") + System.currentTimeMillis() + "@mail.com";
+	private static String generateDynamicEmail() {
+        return ConfigReader.getProperty("register.email") + java.util.UUID.randomUUID() + System.currentTimeMillis()+ System.currentTimeMillis() + "@mail.com";
     }
 }

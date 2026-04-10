@@ -1,12 +1,14 @@
 package com.automationexercise.api.stepdefinitions;
 
 import com.automationexercise.api.clients.UserApiClient;
+import com.automationexercise.api.payloads.User;
+import com.automationexercise.api.util.UserDataBuilder;
+import com.automationexercise.api.util.UserFactory;
+import com.automationexercise.api.validators.UserValidator;
+
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
-import com.automationexercise.api.payloads.User;
-import com.automationexercise.api.util.UserDataBuilder;
-import com.automationexercise.api.validators.UserValidator;
 
 public class UserAccountSteps {
 	private User user;
@@ -22,7 +24,7 @@ public class UserAccountSteps {
 	
 	@When("user registers a new account")
 	public void sendPostrequestForRegistation() {
-		user = UserDataBuilder.getRegisterUser();
+		user = UserDataBuilder.getcreateUserData();
 		response = client.resgisterUser(user);
 	}
 
