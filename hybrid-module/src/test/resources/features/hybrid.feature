@@ -1,6 +1,6 @@
-Feature: Cross Layer Testing
+Feature: Hybrid Testing (API + UI )
 
-	Scenario: TC1. Create new User Account
+	Scenario: TC1. Create new User Account Via API and validate Login Via UI
 	    When user registers a new account via API 
 		Then response status code for registration via API should be 201
 	    And retrived response should contains "User created!" message

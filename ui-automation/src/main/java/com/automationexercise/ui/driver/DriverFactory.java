@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -29,6 +30,9 @@ public class DriverFactory {
 				WebDriverManager.edgedriver().setup();
 				driver = new EdgeDriver(OptionsFactory.buildEdgeOptions());
 				break;
+			case "firefox":
+				WebDriverManager.firefoxdriver().setup();
+				driver = new FirefoxDriver(OptionsFactory.buildFirefoxOptions());
 			default:
 				throw new IllegalArgumentException("Invalid browser");
 		}

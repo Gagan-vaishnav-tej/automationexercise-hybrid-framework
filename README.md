@@ -33,7 +33,7 @@ The framework adopts a **Behaviour Driven Development (BDD)** approach using Cuc
 |-------|-----------|
 | **UI** | Register User, Valid Login, Invalid Login, Add to Cart, Remove from Cart |
 | **API** | GET All Products, POST Search Product, POST Create User, DELETE User, PUT Update User, Negative Validation |
-| **Cross-Layer (Hybrid)** | End-to-end flows combining UI actions with API-level verification |
+| **Hybrid Module** | End-to-end flows combining UI actions with API-level verification |
 
 ---
 
@@ -142,7 +142,7 @@ automationexercise-hybrid-framework/          ← Root (Parent POM)
 │                   ├── products-schema.json
 │                   └── user-schema.json
 │
-├── cross-layer-integration/                   ← Hybrid UI + API integration module
+├── hybrid-module/                   ← Hybrid UI + API integration module
 │   ├── pom.xml
 │   └── src/test/
 │       ├── java/
@@ -294,7 +294,7 @@ All commands are run from the **project root directory** unless stated otherwise
 
 ---
 
-### Run All Tests (UI + API + Cross-Layer, Sequential)
+### Run All Tests (UI + API + hybrid-module, Sequential)
 
 ```bash
 mvn clean test
@@ -318,10 +318,10 @@ mvn clean test -pl api-automation
 
 ---
 
-### Run Cross-Layer (Hybrid) Tests Only
+### Run hybrid-module (Hybrid) Tests Only
 
 ```bash
-mvn clean test -pl cross-layer-integration
+mvn clean test -pl hybrid-module
 ```
 
 ---
@@ -349,8 +349,8 @@ mvn clean test -pl api-automation -Dcucumber.features=src/test/resources/feature
 # API — User Account
 mvn clean test -pl api-automation -Dcucumber.features=src/test/resources/features/userAccount.feature
 
-# Cross-Layer — Hybrid
-mvn clean test -pl cross-layer-integration -Dcucumber.features=src/test/resources/features/hybrid.feature
+# hybrid-module — Hybrid
+mvn clean test -pl hybrid-module -Dcucumber.features=src/test/resources/features/hybrid.feature
 ```
 
 ---
@@ -390,25 +390,25 @@ Each module provides runner classes that can be executed directly from an IDE su
 | `ParallelRunner` | Runs all API scenarios in parallel across multiple browser sessions. |
 | `FailedTestRunner` | Re-runs only the scenarios that failed in the previous run. |
 
-**Cross-Layer Module** — `cross-layer-integration/src/test/java/com/automationexercise/crosslayer/runners/`
+**hybrid-module Module** — `hybrid-module/src/test/java/com/automationexercise/crosslayer/runners/`
 
 | Runner Class | Description |
 |---|---|
-| `CrossLayerTestRunner` | Runs the hybrid cross-layer scenario sequentially. |
-| `FailedTestRunner` | Re-runs only the failed cross-layer scenarios from the previous run. |
+| `CrossLayerTestRunner` | Runs the hybrid hybrid-module scenario sequentially. |
+| `FailedTestRunner` | Re-runs only the failed hybrid-module scenarios from the previous run. |
 
 ---
 
 ### Re-run Only Failed Scenarios
 
-After any run that produces a `target/failed_scenarios.txt`, failed scenarios can be re-executed using the `FailedTestRunner` available in the UI and cross-layer modules:
+After any run that produces a `target/failed_scenarios.txt`, failed scenarios can be re-executed using the `FailedTestRunner` available in the UI and hybrid-module modules:
 
 ```bash
 # Re-run failed UI scenarios
 mvn test -pl ui-automation -Dsurefire.suiteXmlFiles=testng-rerun.xml
 
-# Re-run failed cross-layer scenarios
-mvn test -pl cross-layer-integration -Dsurefire.suiteXmlFiles=testng-rerun.xml
+# Re-run failed hybrid-module scenarios
+mvn test -pl hybrid-module -Dsurefire.suiteXmlFiles=testng-rerun.xml
 ``
 
 ---
@@ -535,12 +535,12 @@ Open directly in any browser — no server required.
 | `ParallelTestRunner` | Parallel Cucumber runner for API tests. |
 | `FailedTestRunner` | Re-runs only failed API scenarios from the previous run. |
 
-### `cross-layer-integration` — Key Classes
+### `hybrid-module` — Key Classes
 
 | Class | Description |
 |-------|-------------|
 | `HybridSteps` | Step definitions that combine UI and API actions within a single scenario — validates end-to-end flows across both layers. |
-| `Hooks` | `@Before` / `@After` hooks scoped to the hybrid module, handling setup and teardown for cross-layer tests. |
+| `Hooks` | `@Before` / `@After` hooks scoped to the hybrid module, handling setup and teardown for hybrid-module tests. |
 | `CrossLayerTestRunner` | Cucumber runner for hybrid feature execution. |
 | `FailedTestRunner` | Re-runs only failed hybrid scenarios from the previous run. |
 
@@ -556,7 +556,7 @@ Open directly in any browser — no server required.
 | **Builder Pattern** | `RequestBuilder` | Centralizes all API request construction; clients and step defs are unaffected by changes. |
 | **Layered Architecture** | API module (Client → Builder → Validator) | Each layer has a single responsibility; independently modifiable and testable. |
 | **BDD (Cucumber)** | All feature files | Scenarios readable by non-technical stakeholders without knowing Java. |
-| **Cross-Layer Integration** | `cross-layer-integration` module | Combines UI and API in a single test flow, validating end-to-end consistency across layers. |
+| **hybrid-module Integration** | `hybrid-module` module | Combines UI and API in a single test flow, validating end-to-end consistency across layers. |
 
 ---
 
