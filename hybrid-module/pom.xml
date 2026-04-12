@@ -6,7 +6,7 @@
     <artifactId>automationexercise-hybrid-framework</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>cross-layer-integration</artifactId>
+  <artifactId>hybrid-module</artifactId>
 
 
 <dependencies>
