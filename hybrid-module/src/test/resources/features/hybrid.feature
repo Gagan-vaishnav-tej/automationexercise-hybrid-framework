@@ -3,8 +3,8 @@ Feature: Hybrid Testing (API + UI )
 	Scenario: TC1. Create new User Account Via API and validate Login Via UI
 	    When user registers a new account via API 
 		Then response status code for registration via API should be 201
-	    And retrived response should contains "User created!" message
-	    And retrived response should match create user reponse JSON schema
+	    And retrieved response should contains "User created!" message
+	    And retrieved response should match create user response JSON schema
 	    
 	    Then the email and password of the user registered via API is retrieved
 	    Given the registered user is on the home page

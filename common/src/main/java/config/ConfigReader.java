@@ -28,11 +28,10 @@ public class ConfigReader {
 
 	
 	public static String getProperty(String key) {
-		String value = prop.getProperty(key);
-		if (value == null) {
+		if (key == null) {
             throw new RuntimeException("Property not found: " + key);
         }
-		return value;
+		return prop.getProperty(key);	
 	}
 
 }

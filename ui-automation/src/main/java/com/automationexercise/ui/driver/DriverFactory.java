@@ -21,6 +21,10 @@ public class DriverFactory {
         Logger.getLogger("io.github.bonigarcia").setLevel(Level.SEVERE);
         
 		WebDriver driver;
+		
+		if(browser == null || browser.isEmpty()) {
+			browser = "chrome";
+		}
 		switch(browser.toLowerCase()) {
 			case "chrome":
 				WebDriverManager.chromedriver().setup();
@@ -33,6 +37,7 @@ public class DriverFactory {
 			case "firefox":
 				WebDriverManager.firefoxdriver().setup();
 				driver = new FirefoxDriver(OptionsFactory.buildFirefoxOptions());
+				break;
 			default:
 				throw new IllegalArgumentException("Invalid browser");
 		}

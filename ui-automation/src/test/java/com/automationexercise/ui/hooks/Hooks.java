@@ -16,7 +16,7 @@ public class Hooks {
 	@Before
 	public void setUp() {
 		driver = DriverFactory.initDriver(ConfigReader.getProperty("browser"));
-		driver.get(ConfigReader.getProperty("base.url"));
+		driver.get(ConfigReader.getProperty("base.ui.url"));
 	}
 	
 	@After

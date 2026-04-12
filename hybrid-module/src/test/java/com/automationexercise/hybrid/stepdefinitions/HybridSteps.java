@@ -1,4 +1,4 @@
-package com.automationexercise.crosslayer.stepdefinitions;
+package com.automationexercise.hybrid.stepdefinitions;
 
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +9,6 @@ import com.automationexercise.api.payloads.User;
 import com.automationexercise.api.util.UserDataBuilder;
 import com.automationexercise.api.validators.UserValidator;
 import com.automationexercise.ui.driver.DriverFactory;
-import com.automationexercise.ui.pages.AccountCreatedPage;
 import com.automationexercise.ui.pages.AccountDeletedPage;
 import com.automationexercise.ui.pages.HomePage;
 import com.automationexercise.ui.pages.LoginPage;
@@ -26,13 +25,13 @@ public class HybridSteps {
 	private LoginPage loginPage;
 	private HomePage homePage;
 	private AccountDeletedPage accountDeletedPage;
-	private AccountCreatedPage accoutCreatedPage;
 	private Logger logger = LogsFactory.getLogger(HybridSteps.class);
 
     private User user;
 	private UserApiClient client;
 	private Response response;
 	private UserValidator validator;
+	private String email, password;
 	
 	public HybridSteps()
 	{
@@ -52,19 +51,20 @@ public class HybridSteps {
 	    validator.validateStatusCode(response, statusCode);
 	}
 	
-	@Then("retrived response should contains {string} message")
+	@Then("retrieved response should contains {string} message")
 	public void validateUserCreatedMessage(String string) {
 	    validator.validateMessage(response, string);
 	}
 	
-	@Then("retrived response should match create user reponse JSON schema")
+	@Then("retrieved response should match create user response JSON schema")
 	public void validateUserResponseSchema() {
 	    validator.validateUserResponseSchema(response);
 	}
 	
 	@Then("the email and password of the user registered via API is retrieved")
-	public void the_email_and_password_of_the_user_registered_via_api_is_retrieved() {
-	    
+	public void getDetails() {
+		email = user.getEmail();
+		password = user.getPassword();
 	}
 	
 	@Given("the registered user is on the home page")
@@ -92,8 +92,6 @@ public class HybridSteps {
 	
 	@When("the registered user enters registered email and password in login form")
 	public void userEntersValidUsernameAndPassword() {
-	    String email = user.getEmail();
-	    String password = user.getPassword();
 	    loginPage.enterLoginDetails(email, password);
 	    logger.info("user enters Username in login section of the page");
 	    
@@ -122,7 +120,6 @@ public class HybridSteps {
 	@When("the registered user clicks Continue button")
 	public void clicksContinue() {
 	    logger.info("the user clicks on Continue");
-	    accoutCreatedPage = new AccountCreatedPage(driver);
 	    accountDeletedPage.clickContinue();
 	}
 }
