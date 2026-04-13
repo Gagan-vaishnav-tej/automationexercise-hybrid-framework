@@ -1,6 +1,6 @@
 Feature: Add and Remove Products from and to the Cart
 
-	@AddProduct @UI
+	@Smoke @UI
 	Scenario: TC4: Add Product to the Cart and validate 
 	Given the user is on the home page
 	When the user Click Products button
@@ -11,7 +11,7 @@ Feature: Add and Remove Products from and to the Cart
 	Then user verify both products are added to Cart
 	And user should verify their prices, quantity and total price
 	
-	@RemoveProduct @UI
+	@Regression @UI
 	Scenario: TC5: Remove Item from cart and validate
 	Given the user is on home page
 	And the user has products in the cart

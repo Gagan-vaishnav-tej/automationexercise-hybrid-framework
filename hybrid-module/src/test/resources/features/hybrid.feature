@@ -1,5 +1,6 @@
 Feature: Hybrid Testing (API + UI )
 
+	@Hybrid
 	Scenario: TC1. Create new User Account Via API and validate Login Via UI
 	    When user registers a new account via API 
 		Then response status code for registration via API should be 201

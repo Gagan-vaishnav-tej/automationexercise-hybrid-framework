@@ -1,6 +1,6 @@
 Feature: User Registration
 
-	@Register @UI
+	@Smoke @UI
 	Scenario: TC1: Register New User and validate
 
 	Given the user is on the home page	
