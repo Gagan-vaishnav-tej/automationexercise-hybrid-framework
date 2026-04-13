@@ -1,4 +1,3 @@
-@API
 Feature:Negative Validation
 
   	@Regression @API

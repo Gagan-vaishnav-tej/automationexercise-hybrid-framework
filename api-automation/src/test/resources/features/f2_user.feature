@@ -1,4 +1,3 @@
-@API
 Feature: User Account APIs
 
 	@Smoke  @CreateUser @API

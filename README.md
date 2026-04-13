@@ -347,7 +347,7 @@ mvn test -pl api-automation -Dcucumber.features=src/test/resources/features/f2_u
 mvn test -pl api-automation -Dcucumber.features=src/test/resources/features/f3_negative_validation.feature
 
 # hybrid-module — Hybrid - Create a new user via API and validate login via UI
-mvn clean test -pl hybrid-module -Dcucumber.features=src/test/resources/features/hybrid.feature
+mvn test -pl hybrid-module -Dcucumber.features=src/test/resources/features/hybrid.feature
 ```
 
 ---
@@ -388,7 +388,11 @@ The framework supports **scenario-level parallel execution** in the `ui-automati
 ### Run in Parallel Mode
 
 ```bash
-mvn clean test -pl ui-automation -Dsurefire.suiteXmlFiles=testng-parallel.xml
+#UI
+mvn test -pl ui-automation -Dsurefire.suiteXmlFiles=parallel-testng.xml
+
+#API
+mvn test -pl api-automation -Dsurefire.suiteXmlFiles=parallel-testng.xml
 ```
 
 ### How It Works

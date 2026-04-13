@@ -1,4 +1,3 @@
-@API
 Feature: Product APIs
 
 	@Smoke @API
