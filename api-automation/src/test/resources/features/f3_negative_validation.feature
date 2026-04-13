@@ -1,6 +1,7 @@
+@API
 Feature:Negative Validation
 
-  	@Regression
+  	@Regression @API
 	Scenario: TC6. Delete User Account (Negative - Invalid Credentials)
 	  Given user tries to delete with invalid credentials
 	  When user tries to delete account with invalid credentials
