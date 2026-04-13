@@ -4,17 +4,18 @@ package com.automationexercise.api.builder;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.automationexercise.api.constants.ApiEndpoints;
+import com.automationexercise.api.payloads.User;
+
+import config.ConfigReader;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import com.automationexercise.api.payloads.User;
 
 public class RequestBuilder {
 	
 	public RequestSpecification buildRequest() {
 		return RestAssured.given()
-				.baseUri(ApiEndpoints.base_url);
+				.baseUri(ConfigReader.getProperty("base.api.url"));
 	}
 
 	public Response get(String endpoint) {

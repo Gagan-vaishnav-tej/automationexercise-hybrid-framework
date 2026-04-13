@@ -18,12 +18,12 @@
     <dependency>
       <groupId>com.automationexercise</groupId>
 	  <artifactId>api-automation</artifactId>
-	  <version>0.0.1-SNAPSHOT</version>
+	  <version>${project.version}</version>
     </dependency>
     <dependency>
     	<groupId>com.automationexercise</groupId>
     	<artifactId>ui-automation</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
+    	<version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
@@ -71,23 +71,20 @@
       <groupId>io.qameta.allure</groupId>
 	  <artifactId>allure-cucumber7-jvm</artifactId>
     </dependency>
-
-</dependencies>
-
-
-<build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.2.5</version>
-        <configuration>
-          <includes>
-            <include>**/CrossLayerTestRunner.java</include>
-          </includes>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-  
+	</dependencies>
+	
+	<build>
+	    <plugins>
+	      <plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-surefire-plugin</artifactId>
+	        <version>3.2.5</version>
+	        <configuration>
+	          <includes>
+	            <include>**/HybridTestRunner.java</include>
+	          </includes>
+	        </configuration>
+	      </plugin>
+	    </plugins>
+	  </build>
   </project>

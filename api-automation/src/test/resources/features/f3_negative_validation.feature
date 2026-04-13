@@ -6,6 +6,6 @@ Feature:Negative Validation
 	  When user tries to delete account with invalid credentials
 	  Then delete account response status code should be 404
 	  And delete account response should contain "Account not found!" message
-	  And response should match delete user reponse SON schema
+	  And response should match delete user response JSON schema
 	  
 	  
