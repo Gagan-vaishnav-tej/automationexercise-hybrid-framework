@@ -3,7 +3,7 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
   <classes>
-  	<class name="com.automationexercise.api.runners.APITestRunner"></class>
+  	<class name="com.automationexercise.hybrid.runners.HybridTestRunner"></class>
   </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

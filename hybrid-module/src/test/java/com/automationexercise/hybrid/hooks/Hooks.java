@@ -1,4 +1,4 @@
-package com.automationexercise.ui.hooks;
+package com.automationexercise.hybrid.hooks;
 
 import org.openqa.selenium.WebDriver;
 

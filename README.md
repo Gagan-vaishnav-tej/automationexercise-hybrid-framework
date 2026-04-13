@@ -33,7 +33,7 @@ The framework adopts a **Behaviour Driven Development (BDD)** approach using Cuc
 |-------|-----------|
 | **UI** | Register User, Valid Login, Invalid Login, Add to Cart, Remove from Cart |
 | **API** | GET All Products, POST Search Product, POST Create User, DELETE User, PUT Update User, Negative Validation |
-| **Cross-Layer (Hybrid)** | End-to-end flows combining UI actions with API-level verification |
+| **Hybrid Module** | End-to-end flows combining UI actions with API-level verification |
 
 ---
 
@@ -127,11 +127,11 @@ automationexercise-hybrid-framework/          ← Root (Parent POM)
 │           │       │   ├── APITestRunner.java      ← Sequential execution
 │           │       │   ├── ParallelTestRunner.java ← Parallel execution
 │           │       │   └── FailedTestRunner.java   ← Re-run failed scenarios only
-│           │       └── stepdef/
-│           │           ├── DeleteUserAccountSteps.java
+│           │       └── stepdefinitions/
+│           │           ├── DeleteUserSteps.java
 │           │           ├── ProductSteps.java
-│           │           ├── UpdateAccountSteps.java
-│           │           └── UserAccountSteps.java
+│           │           ├── UpdateSteps.java
+│           │           └── UserSteps.java
 │           └── resources/
 │               ├── allure.properties
 │               ├── features/
@@ -142,14 +142,15 @@ automationexercise-hybrid-framework/          ← Root (Parent POM)
 │                   ├── products-schema.json
 │                   └── user-schema.json
 │
-├── cross-layer-integration/                   ← Hybrid UI + API integration module
+├── hybrid-module/                   ← Hybrid UI + API integration module
 │   ├── pom.xml
+│   ├── master-testng.xml
 │   └── src/test/
 │       ├── java/
 │       │   └── com.automationexercise.crosslayer/
 │       │       ├── hooks/Hooks.java
 │       │       ├── runners/
-│       │       │   ├── CrossLayerTestRunner.java
+│       │       │   ├── HybridTestRunner.java
 │       │       │   └── FailedTestRunner.java
 │       │       └── stepdefinitions/HybridSteps.java
 │       └── resources/
@@ -210,7 +211,7 @@ automationexercise-hybrid-framework/          ← Root (Parent POM)
 ### Step 1 — Clone the Repository
 
 ```bash
-git clone https://github.com/<your-org>/automationexercise-hybrid-framework.git
+git clone https://github.com/Gagan-vaishnav-tej/automationexercise-hybrid-framework
 cd automationexercise-hybrid-framework
 ```
 
@@ -236,11 +237,12 @@ You should see `BUILD SUCCESS` with no errors. If you see dependency resolution 
 
 All environment-specific values are externalized — **no hardcoding exists in any Java class or feature file.**
 
-### UI Module — `ui-automation/src/test/resources/config.properties`
+### Common Module — `com/src/main/resources/config.properties`
 
 ```properties
 # ── Application ──────────────────────────────────────
-base.url=https://automationexercise.com/
+base.ui.url=https://automationexercise.com/
+base.api.url=https://automationexercise.com/api
 browser=chrome                          # Options: chrome | edge
 
 # ── Registration Data ────────────────────────────────
@@ -267,12 +269,6 @@ login.password=Test@123
 login.invalidemail=test@gmail.com       # Invalid email for negative login test (TC3)
 ```
 
-### API Module — `api-automation/src/test/resources/config.properties`
-
-```properties
-# ── API Base URL ─────────────────────────────────────
-base.url=https://automationexercise.com/api
-```
 
 > **Switching environments:** To point the framework at a different environment, update only the `base.url` in the relevant `config.properties` file. No Java code changes are needed.
 
@@ -294,7 +290,7 @@ All commands are run from the **project root directory** unless stated otherwise
 
 ---
 
-### Run All Tests (UI + API + Cross-Layer, Sequential)
+### Run All Tests (UI + API + hybrid-module, Sequential)
 
 ```bash
 mvn clean test
@@ -305,7 +301,7 @@ mvn clean test
 ### Run UI Tests Only
 
 ```bash
-mvn clean test -pl ui-automation
+mvn test -pl ui-automation
 ```
 
 ---
@@ -313,15 +309,15 @@ mvn clean test -pl ui-automation
 ### Run API Tests Only
 
 ```bash
-mvn clean test -pl api-automation
+mvn test -pl api-automation
 ```
 
 ---
 
-### Run Cross-Layer (Hybrid) Tests Only
+### Run hybrid-module (Hybrid) Tests Only
 
 ```bash
-mvn clean test -pl cross-layer-integration
+mvn test -pl hybrid-module
 ```
 
 ---
@@ -332,40 +328,26 @@ Run from the **module directory**, not the project root:
 
 ```bash
 # UI — Register
-mvn clean test -pl ui-automation -Dcucumber.features=src/test/resources/features/register.feature
+mvn test -pl ui-automation -Dcucumber.features=src/test/resources/features/f1_register.feature
 
-# UI — Login
-mvn clean test -pl ui-automation -Dcucumber.features=src/test/resources/features/login.feature
+# UI — Login - Valid Login, Invalid Login
+mvn test -pl ui-automation -Dcucumber.features=src/test/resources/features/f2_login.feature
 
-# UI — Add Product
-mvn clean test -pl ui-automation -Dcucumber.features=src/test/resources/features/addProduct.feature
+# UI — Cart - Add Product, Remove Product
+mvn test -pl ui-automation -Dcucumber.features=src/test/resources/features/f3_cart.feature
 
-# UI — Remove Product
-mvn clean test -pl ui-automation -Dcucumber.features=src/test/resources/features/removeProduct.feature
 
-# API — Products
-mvn clean test -pl api-automation -Dcucumber.features=src/test/resources/features/product.feature
+# API — Products - Get all Products, Get Single Product Details
+mvn test -pl api-automation -Dcucumber.features=src/test/resources/features/f1_product.feature
 
-# API — User Account
-mvn clean test -pl api-automation -Dcucumber.features=src/test/resources/features/userAccount.feature
+# API — User  - Create new user account, Delete new user account, Update user account
+mvn test -pl api-automation -Dcucumber.features=src/test/resources/features/f2_user.feature
 
-# Cross-Layer — Hybrid
-mvn clean test -pl cross-layer-integration -Dcucumber.features=src/test/resources/features/hybrid.feature
-```
+# API —  Negative Validation - delete user acccount that does not exist
+mvn test -pl api-automation -Dcucumber.features=src/test/resources/features/f3_negative_validation.feature
 
----
-
-### Run Tests by Tag
-
-```bash
-# Run a single tag
-mvn clean test -pl ui-automation -Dcucumber.filter.tags="@Login"
-
-# Run multiple tags
-mvn clean test -pl ui-automation -Dcucumber.filter.tags="@Login or @Register"
-
-# Exclude a tag
-mvn clean test -pl ui-automation -Dcucumber.filter.tags="@UI and not @AddProduct"
+# hybrid-module — Hybrid - Create a new user via API and validate login via UI
+mvn clean test -pl hybrid-module -Dcucumber.features=src/test/resources/features/hybrid.feature
 ```
 
 ---
@@ -390,26 +372,12 @@ Each module provides runner classes that can be executed directly from an IDE su
 | `ParallelRunner` | Runs all API scenarios in parallel across multiple browser sessions. |
 | `FailedTestRunner` | Re-runs only the scenarios that failed in the previous run. |
 
-**Cross-Layer Module** — `cross-layer-integration/src/test/java/com/automationexercise/crosslayer/runners/`
+**hybrid-module Module** — `hybrid-module/src/test/java/com/automationexercise/crosslayer/runners/`
 
 | Runner Class | Description |
 |---|---|
-| `CrossLayerTestRunner` | Runs the hybrid cross-layer scenario sequentially. |
-| `FailedTestRunner` | Re-runs only the failed cross-layer scenarios from the previous run. |
-
----
-
-### Re-run Only Failed Scenarios
-
-After any run that produces a `target/failed_scenarios.txt`, failed scenarios can be re-executed using the `FailedTestRunner` available in the UI and cross-layer modules:
-
-```bash
-# Re-run failed UI scenarios
-mvn test -pl ui-automation -Dsurefire.suiteXmlFiles=testng-rerun.xml
-
-# Re-run failed cross-layer scenarios
-mvn test -pl cross-layer-integration -Dsurefire.suiteXmlFiles=testng-rerun.xml
-``
+| `HybridTestRunner` | Runs the hybrid hybrid-module scenario sequentially. |
+| `FailedTestRunner` | Re-runs only the failed hybrid-module scenarios from the previous run. |
 
 ---
 
@@ -535,13 +503,13 @@ Open directly in any browser — no server required.
 | `ParallelTestRunner` | Parallel Cucumber runner for API tests. |
 | `FailedTestRunner` | Re-runs only failed API scenarios from the previous run. |
 
-### `cross-layer-integration` — Key Classes
+### `hybrid-module` — Key Classes
 
 | Class | Description |
 |-------|-------------|
 | `HybridSteps` | Step definitions that combine UI and API actions within a single scenario — validates end-to-end flows across both layers. |
-| `Hooks` | `@Before` / `@After` hooks scoped to the hybrid module, handling setup and teardown for cross-layer tests. |
-| `CrossLayerTestRunner` | Cucumber runner for hybrid feature execution. |
+| `Hooks` | `@Before` / `@After` hooks scoped to the hybrid module, handling setup and teardown for hybrid-module tests. |
+| `HYbridTestRunner` | Cucumber runner for hybrid feature execution. |
 | `FailedTestRunner` | Re-runs only failed hybrid scenarios from the previous run. |
 
 ---
@@ -556,7 +524,7 @@ Open directly in any browser — no server required.
 | **Builder Pattern** | `RequestBuilder` | Centralizes all API request construction; clients and step defs are unaffected by changes. |
 | **Layered Architecture** | API module (Client → Builder → Validator) | Each layer has a single responsibility; independently modifiable and testable. |
 | **BDD (Cucumber)** | All feature files | Scenarios readable by non-technical stakeholders without knowing Java. |
-| **Cross-Layer Integration** | `cross-layer-integration` module | Combines UI and API in a single test flow, validating end-to-end consistency across layers. |
+| **hybrid-module Integration** | `hybrid-module` module | Combines UI and API in a single test flow, validating end-to-end consistency across layers. |
 
 ---
 

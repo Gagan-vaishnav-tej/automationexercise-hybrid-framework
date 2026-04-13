@@ -6,7 +6,7 @@ public class RandomUtil {
 	
 	public static String generateEmail() {
 		
-		return ConfigReader.getProperty("register.email") + System.currentTimeMillis() + "@test.com";
+		return ConfigReader.getProperty("register.email") + System.currentTimeMillis() + "@gmail.com";
 	}
 	
 	public static String generatePassword() {
